@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iris Scatter Plot</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+  </head>
+  <body>
+    <div class="controls">
+      <label for="">X axis:</label>
+      <select name="select-x" id="select-x" value="sepal length" onchange="changeSelection()">
+        <option value="sepal length" selected>sepal length</option>
+        <option value="sepal width">sepal width</option>
+        <option value="petal length">petal length</option>
+        <option value="petal width">petal width</option>
+      </select>
+      <label for="">Y axis:</label>
+      <select name="select-y" id="select-y" value="sepal width" onchange="changeSelection()">
+        <option value="sepal length">sepal length</option>
+        <option value="sepal width" selected>sepal width</option>
+        <option value="petal length">petal length</option>
+        <option value="petal width">petal width</option>
+      </select>
+    </div>
+    <svg width="1024" height="800"></svg>
+    <script src="0856623.js"></script>
+  </body>
+</html>
