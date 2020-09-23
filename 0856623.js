@@ -29,6 +29,13 @@ const changeSelection = () => {
 
 const render = data => {
     const title = `Iris Scatter Plot: ${selectedX} vs. ${selectedY}`;
+    const margin = { top: 60, right: 40, bottom: 88, left: 150 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+
+    const color = d3.scaleOrdinal()
+    .domain(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
+    .range(['sienna', 'olivedrab', 'rebeccapurple']);
     
     const xValue = d => d[selectedX];
     const xAxisLabel = selectedX;
@@ -36,10 +43,6 @@ const render = data => {
     const yValue = d => d[selectedY];
     const circleRadius = 10;
     const yAxisLabel = selectedY;
-
-    const margin = { top: 60, right: 40, bottom: 88, left: 150 };
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
 
     const xScale = d3.scaleLinear()
     .domain(d3.extent(data, xValue))
@@ -91,12 +94,7 @@ const render = data => {
         .attr('cy', d => yScale(yValue(d)))
         .attr('cx', d => xScale(xValue(d)))
         .attr('r', circleRadius)
-        .attr('fill', d => d.class === 'Iris-setosa' 
-                        ? 'purple' 
-                        : d.class === 'Iris-versicolor'
-                            ? 'blue'
-                            : 'black'
-        );
+        .attr('fill', d => color(d.class));
     
     g.append('text')
         .attr('class', 'title')
