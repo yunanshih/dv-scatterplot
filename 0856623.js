@@ -29,13 +29,13 @@ const changeSelection = () => {
 
 const render = data => {
     const title = `Iris Scatter Plot: ${selectedX} vs. ${selectedY}`;
-    const margin = { top: 60, right: 40, bottom: 88, left: 150 };
+    const margin = { top: 60, right: 60, bottom: 100, left: 100 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
     const color = d3.scaleOrdinal()
-    .domain(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
-    .range(['sienna', 'olivedrab', 'rebeccapurple']);
+        .domain(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
+        .range(['sienna', 'olivedrab', 'rebeccapurple']);
     
     const xValue = d => d[selectedX];
     const xAxisLabel = selectedX;
@@ -45,32 +45,32 @@ const render = data => {
     const yAxisLabel = selectedY;
 
     const xScale = d3.scaleLinear()
-    .domain(d3.extent(data, xValue))
-    .range([0, innerWidth])
-    .nice();
-    
+        .domain(d3.extent(data, xValue))
+        .range([0, innerWidth])
+        .nice();
+
     const yScale = d3.scaleLinear()
-    .domain(d3.extent(data, yValue))
-    .range([innerHeight, 0])
-    .nice();
+        .domain(d3.extent(data, yValue))
+        .range([innerHeight, 0])
+        .nice();
     
     const g = svg.append('g')
-    .attr('transform', `translate(${margin.left},${margin.top})`);
+        .attr('transform', `translate(${margin.left},${margin.top})`);
     
     const xAxis = d3.axisBottom(xScale)
-    .tickSize(-innerHeight)
-    .tickPadding(15);
+        .tickSize(-innerHeight)
+        .tickPadding(15);
     
     const yAxis = d3.axisLeft(yScale)
-    .tickSize(-innerWidth)
-    .tickPadding(10);
+        .tickSize(-innerWidth)
+        .tickPadding(10);
     
     const yAxisG = g.append('g').call(yAxis);
     yAxisG.selectAll('.domain').remove();
     
     yAxisG.append('text')
         .attr('class', 'axis-label')
-        .attr('y', -93)
+        .attr('y', -64)
         .attr('x', -innerHeight / 2)
         .attr('fill', 'black')
         .attr('transform', `rotate(-90)`)
@@ -78,19 +78,18 @@ const render = data => {
         .text(yAxisLabel);
     
     const xAxisG = g.append('g').call(xAxis)
-    .attr('transform', `translate(0,${innerHeight})`);
+        .attr('transform', `translate(0,${innerHeight})`);
     
     xAxisG.select('.domain').remove();
     
     xAxisG.append('text')
         .attr('class', 'axis-label')
-        .attr('y', 75)
+        .attr('y', 64)
         .attr('x', innerWidth / 2)
         .attr('fill', 'black')
         .text(xAxisLabel);
     
-    g.selectAll('circle').data(data)
-    .enter().append('circle')
+    g.selectAll('circle').data(data).enter().append('circle')
         .attr('cy', d => yScale(yValue(d)))
         .attr('cx', d => xScale(xValue(d)))
         .attr('r', circleRadius)

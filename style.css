@@ -1,28 +1,51 @@
 body {
     margin: 0px;
     overflow: hidden;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
   
-  circle {
-    opacity: 0.6;
-  }
-  
-  text {
-    font-family: sans-serif;
-  }
-  
-  .tick text {
-    font-size: 18px;
-  }
-  
-  .tick line {
-    stroke: #C0C0BB;
-  }
-  
-  .axis-label {
-    font-size: 18px;
-  }
-  
-  .title {
-    font-size: 24px;
-  }
+circle {
+  opacity: 0.6;
+}
+
+text {
+  font-family: sans-serif;
+}
+
+label {
+  font-size: 18px;
+}
+
+select {
+  font-size: 18px;
+}
+
+option {
+  font-size: 18px;
+}
+
+#select-x {
+  margin-right: 20px;
+}
+
+.controls {
+  margin: 20px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.tick text {
+  font-size: 18px;
+}
+
+.tick line {
+  stroke: lightgrey;
+}
+
+.axis-label {
+  font-size: 24px;
+}
