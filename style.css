@@ -30,6 +30,33 @@ option {
   margin-right: 20px;
 }
 
+.flower {
+  margin-right: 20px;
+}
+
+.flower:last-child {
+  margin-right: 0;
+}
+
+.dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+#setosa {
+  background: sienna;
+}
+
+#versicolor {
+  background: olivedrab;
+}
+
+#virginica {
+  background: rebeccapurple;
+}
+
 .controls {
   margin: 20px;
 }
